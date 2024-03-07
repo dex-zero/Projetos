@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Characters</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.5rem;
+            width: 100vw;
+            height: auto;
+            overflow-x: hidden;
+            background-image: url(./images/wallpaper.jpg);
+            background-position: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            gap: 20px;
+        }
+        
+        #buscar{
+            display: flex;
+            color: aliceblue;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #buscarnome{
+            display: flex;
+            color: aliceblue;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5vw;
+            height: auto;
+            color: aliceblue;
+        }
+
+        status{
+            width: 5px;
+            border-radius: 100%;
+        }
+        
+        img{
+            border-radius: 100%;
+        }
+
+        .card{
+            border: 2px solid rgb(105, 250, 61);
+            padding: 10px;
+        }
+        .circles{
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <img src="/RickAndMortyAPI/images/Rick-And-Morty-Logo.png" alt="Logo" width="500px" height="auto">
+    <div id="buscar">
+        <label for="pageInput">Digite a Página (1/42)</label>
+        <input type="text" id="pageInput">
+        <button onclick="fetchCharacters()" >Buscar</button>
+    </div>
+    <div id="buscarnome">
+        <label for="nameInput">Busca por Nome</label>
+        <input type="text" id="nameInput">
+        <button onclick="searchByName()" >Buscar</button>
+    </div>
+
+    <div id="container"></div>
+    <script>
+            async function fetchCharacters(){
+                const page = document.getElementById("pageInput").value || 1;
+                const apiUrl = `https://rickandmortyapi.com/api/character/?page=${page}`
+
+                try{
+                    const response = await fetch(apiUrl)
+                    const data = await response.json()
+                    displayCharacters(data.results)
+                } catch(error) {
+                    console.error("Erro ao buscar personagens - ", error)
+                }
+            }
+
+
+            function displayCharacters(characters){
+                    const container = document.getElementById("container")
+                    console.innerHTML= ""
+
+                    characters.forEach(character=>{
+                        const card = document.createElement("div");
+                        card.className = "card"
+
+                        const name = document.createElement("h3")
+                        name.textContent = character.name
+                        
+                        const species = document.createElement("p")
+                        species.textContent = `Specie: ${character.species}`
+
+                        const status = document.createElement("p")
+                        status.textContent = character.status
+                        
+                        const a = document.createElement("div")
+                        a.className = "circles"
+
+                        if(character.status === "Dead"){
+                            a.style.backgroundColor = "red"
+                        }
+                        else if(character.status === "Alive"){
+                            a.style.backgroundColor = "green"
+                        }
+                        else{
+                            a.style.backgroundColor = "grey"
+                        }
+
+                        const image = document.createElement("img")
+                        image.src = character.image
+                        image.alt = character.name
+
+
+                        card.appendChild(name)
+                        card.appendChild(species)
+                        card.appendChild(status)
+                        card.appendChild(image)
+
+
+                        container.appendChild(card)
+                    })
+            }
+
+            function searchByName(){
+                const searchTerm = document.getElementById("nameInput").value.toLowerCase()
+                const characters = document.querySelectorAll(".card")
+
+                characters.forEach((character) => {
+                    const characterName = character.querySelector("h3").textContent.toLowerCase()
+                    if(characterName.includes(searchTerm)){
+                        character.style.display = "block"                        
+                    }else{
+                        character.style.display = "none"
+                    }
+                })
+            }
+    </script>
+</body>
+</html>
