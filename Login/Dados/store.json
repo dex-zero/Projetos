@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "descricao": "Preservativo Sabor Acarajé",
+        "imagem": "../Login/images/acarajé.jpg",
+        "preco": 100.0
+    },
+    {
+        "id": 2,
+        "descricao": "Preservativo Sabor Pão de Alho",
+        "imagem": "../Login/images/paodealho.jpg",
+        "preco": 200.0
+    },
+    {
+        "id": 3,
+        "descricao": "Preservativo Sabor Torresmo",
+        "imagem": "../Login/images/torresmo.jpg",
+        "preco": 3000.0
+    }
+]

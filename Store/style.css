@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    padding: 2em;
+    background-image: url("../Login/images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.idPerfil{
+    display: flex;
+    gap: 10px;
+    color: rgb(20, 255, 157);
+}
+
+.title{
+    color: rgb(20, 255, 157);
+}
+
+#user{
+    color: rgb(20, 255, 157);
+}
+
+.para{
+    color: rgb(20, 255, 157);
+}
+
+#perfil{
+    color: rgb(20, 255, 157);
+}
+
+@media (width <= 900px){
+    .center{
+        justify-content: center;
+        gap: 2vh;
+    }
+}
+

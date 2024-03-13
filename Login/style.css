@@ -7,7 +7,7 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: rgb(50, 34, 72);
@@ -24,6 +24,14 @@ body{
    border-radius: 10px;
    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
    border: 2px solid rgb(255, 152, 217);
+}
+main{
+    flex-direction: row;
+}
+
+img{
+    border-radius: 0 100% 100% 0;
+    overflow: hidden;
 }
 
 input{
