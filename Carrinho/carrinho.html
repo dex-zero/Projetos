@@ -5,8 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
     <title>=Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.0.1/mammoth.browser.min.js"></script>
 </head>
 <body>
+    <a href="../Store/">Continuar comprando</a>
     <h1>Carrinho</h1>
+    <div id="lista"></div>
+    <h3 id="total"></h3>
+    <button onclick="gerarDocumentoWord()">Realizar pedido</button>
+    <p>
+        Pedido gerado com sucesso
+        <button id="sc" onclick="sucessClose()">M</button>
+    </p>
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
